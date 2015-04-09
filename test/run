@@ -31,6 +31,7 @@ sti_args="--forcePull=false -s ${scripts_url}"
 test_port=8000
 
 image_exists() {
+  echo "Checling if $1 exists"
   docker inspect $1 &>/dev/null
 }
 
@@ -43,7 +44,6 @@ container_ip() {
 }
 
 run_sti_build() {
-  echo "Running sti build ${sti_args} file://${test_dir}/test-app ${IMAGE_NAME} ${IMAGE_NAME}-testapp"
   sti build ${sti_args} file://${test_dir}/test-app ${IMAGE_NAME} ${IMAGE_NAME}-testapp
 }
 
