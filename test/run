@@ -18,7 +18,7 @@ realpath() {
 test_dir="$(realpath $(dirname "${BASH_SOURCE[0]}"))"
 image_dir=$(realpath ${test_dir}/..)
 scripts_url="file://${image_dir}/.sti/bin"
-cid_file=$(mktemp)
+cid_file=$(mktemp XXXXX)
 
 # Since we built the candidate image locally, we don't want STI attempt to pull
 # it from Docker hub
