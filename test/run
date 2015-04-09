@@ -62,6 +62,7 @@ prepare() {
 }
 
 run_test_application() {
+  echo "Running docker run --rm --cidfile=${cid_file} -p ${test_port} ${IMAGE_NAME}-testapp"
   docker run --rm --cidfile=${cid_file} -p ${test_port} ${IMAGE_NAME}-testapp
 }
 
