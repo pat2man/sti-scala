@@ -43,6 +43,7 @@ container_ip() {
 }
 
 run_sti_build() {
+  echo "Running sti build ${sti_args} file://${test_dir}/test-app ${IMAGE_NAME} ${IMAGE_NAME}-testapp"
   sti build ${sti_args} file://${test_dir}/test-app ${IMAGE_NAME} ${IMAGE_NAME}-testapp
 }
 
@@ -51,9 +52,7 @@ prepare() {
     echo "ERROR: The image ${IMAGE_NAME} must exist before this script is executed."
     exit 1
   fi
-  
-  echo "Running  ${test_dir}/test-app >/dev/null"
-  
+    
   # TODO: STI build require the application is a valid 'GIT' repository, we
   # should remove this restriction in the future when a file:// is used.
   pushd ${test_dir}/test-app >/dev/null
