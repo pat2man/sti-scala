@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -x
 #
 # The 'run' performs a simple test that verifies that STI image.
 # The main focus here is to excersise the STI scripts.
@@ -11,10 +11,14 @@
 #
 IMAGE_NAME=${IMAGE_NAME-scala-candidate}
 
-test_dir="$(dirname "${BASH_SOURCE[0]}")"
-image_dir="${test_dir}/.."
+realpath() {
+    [[ $1 = /* ]] && echo "$1" || echo "$PWD/${1#./}"
+}
+
+test_dir="$(realpath $(dirname "${BASH_SOURCE[0]}"))"
+image_dir=$(realpath ${test_dir}/..)
 scripts_url="file://${image_dir}/.sti/bin"
-cid_file=$(mktemp /tmp/XXXXXXXXXX.cid)
+cid_file=$(mktemp -t CIDFILE)
 
 # Since we built the candidate image locally, we don't want STI attempt to pull
 # it from Docker hub
