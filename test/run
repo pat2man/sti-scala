@@ -21,6 +21,8 @@ scripts_url="file://${image_dir}/.sti/bin"
 temp_dir=$(mktemp -dt "XXXXXXXXXX")
 cid_file="$temp_dir/cid"
 
+echo "CID FILE: $cid_file"
+
 # Since we built the candidate image locally, we don't want STI attempt to pull
 # it from Docker hub
 sti_args="--forcePull=false -s ${scripts_url}"
